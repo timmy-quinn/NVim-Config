@@ -24,21 +24,26 @@ set autoindent
 " Disable swap files. Prevents creation of temp backup files
 set noswapfile 
 
+set encoding=utf-8
+
 call plug#begin()
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } " fuzzy finder                                
-Plug 'morhetz/gruvbox' " Gruvbox: Color Scheme
+"Plug 'morhetz/gruvbox' " Gruvbox: Color Scheme
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'catpuccin/nvim', { 'as': 'catpuccin' }
 " Plug 'kyazdani42/nvim-web-devicons' " Optional, for file icons
 call plug#end()
 
-let g:gruvbox_transparent_bg = 1
-let g:gruvbox_bold = 1
-let g:gruvbox_underline = 1
-let g:gruvbox_undercurl = 1
-let g:gruvbox_italic = 1
-let g:gruvbox_termcolors = 124
-colorscheme gruvbox
+colorscheme catpuccin-frappe
+vim.cmd.colorscheme "catppuccin"
+" let g:gruvbox_transparent_bg = 1
+" let g:gruvbox_bold = 1
+" let g:gruvbox_underline = 1
+" let g:gruvbox_undercurl = 1
+" let g:gruvbox_italic = 1
+" let g:gruvbox_termcolors = 124
+" colorscheme gruvbox
 
 lua << EOF
 require('lualine').setup {
