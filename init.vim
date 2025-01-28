@@ -13,8 +13,25 @@ set ignorecase
 
 set clipboard=unnamedplus
 
+nnoremap ; :
+vnoremap ; :
+
+" mappings prevent pasting and copying to overwrite clipboard
+vnoremap p "_dp
+
+nnoremap d "_d
+vnoremap d "_d
+xnoremap d "_d
+
+nnoremap D d
+vnoremap D d
+xnoremap D d
+
+vnoremap DD dd
+
 " Keybindings
 inoremap jj <Esc>
+noremap o o<Esc>
 
 set tabstop=4
 set shiftwidth=4
@@ -29,21 +46,24 @@ set encoding=utf-8
 call plug#begin()
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } " fuzzy finder                                
-"Plug 'morhetz/gruvbox' " Gruvbox: Color Scheme
+Plug 'morhetz/gruvbox' " Gruvbox: Color Scheme
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'catpuccin/nvim', { 'as': 'catpuccin' }
+"Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 " Plug 'kyazdani42/nvim-web-devicons' " Optional, for file icons
 call plug#end()
 
-colorscheme catpuccin-frappe
-vim.cmd.colorscheme "catppuccin"
-" let g:gruvbox_transparent_bg = 1
-" let g:gruvbox_bold = 1
-" let g:gruvbox_underline = 1
-" let g:gruvbox_undercurl = 1
-" let g:gruvbox_italic = 1
-" let g:gruvbox_termcolors = 124
-" colorscheme gruvbox
+"colorscheme catppuccin-macchiato
+"vim.cmd.colorscheme "catppuccin"
+
+let g:gruvbox_transparent_bg = 1
+let g:gruvbox_bold = 1
+let g:gruvbox_underline = 1
+let g:gruvbox_undercurl = 1
+let g:gruvbox_italic = 1
+let g:gruvbox_termcolors = 124
+colorscheme gruvbox
+
+
 
 lua << EOF
 require('lualine').setup {
@@ -54,6 +74,7 @@ require('lualine').setup {
   }
 }
 EOF
+
 
 lua << EOF
 require('lualine').setup {
