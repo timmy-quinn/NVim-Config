@@ -12,6 +12,7 @@ set ttyfast
 set ignorecase
 
 set clipboard=unnamedplus
+set colorcolumn=80
 
 nnoremap ; :
 vnoremap ; :
@@ -48,6 +49,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } " fuzzy finder                                
 Plug 'morhetz/gruvbox' " Gruvbox: Color Scheme
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'rust-lang/rust.vim'
 "Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 " Plug 'kyazdani42/nvim-web-devicons' " Optional, for file icons
 call plug#end()
