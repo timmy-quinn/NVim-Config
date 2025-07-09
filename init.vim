@@ -72,7 +72,6 @@ let g:gruvbox_italic = 1
 let g:gruvbox_termcolors = 124
 colorscheme gruvbox
 
-
 "configure coc, 
 let g:coc_global_extensions = ['coc-clangd']
 let g:clangd_install_prefix = '/usr/'
@@ -83,6 +82,21 @@ let g:clangd_command = ['clangd',
 \   '--completion-style=detailed']
  
 nnoremap <silent> K :call <sid>show_documentation()<cr>
+
+" Found in the github.com/neoclide/coc.nvim repo
+imap <silent><expr> <C-/>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+autocmd CursorHoldI * silent! call coc#refresh()
+
 function! s:show_documentation()
     if index(['vim', 'help'], &filetype) >= 0
         execute 'help ' . expand('<cword>')
@@ -94,6 +108,14 @@ function! s:show_documentation()
 endfunction
 
 lua << EOF
+
+vim.lsp.config('rust_analyzer', {
+  -- Server-specific settings. See `:help lsp-quickstart`
+  settings = {
+    ['rust-analyzer'] = {},
+  },
+})
+
 
 require('lualine').setup {
   options = {
