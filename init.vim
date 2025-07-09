@@ -57,8 +57,24 @@ call plug#begin()
     Plug 'rust-lang/rust.vim'
     Plug 'vim-scripts/c.vim'
     Plug 'morhetz/gruvbox' " Gruvbox: Color Scheme
+
+
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
+    Plug 'hrsh7th/nvim-cmp'
+
+    " For vsnip users.
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
+
+
+call plug#end()
     "Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
     " Plug 'kyazdani42/nvim-web-devicons' " Optional, for file icons
+    "
 call plug#end()
 
 "colorscheme catppuccin-macchiato
