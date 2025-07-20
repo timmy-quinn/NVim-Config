@@ -42,7 +42,7 @@ inoremap jj <Esc>
 noremap o o<Esc>
 
 " remap this to allow vim-leap to use s 
-noremap s /S
+" noremap s /S
 
 set tabstop=4
 set shiftwidth=4
@@ -112,24 +112,9 @@ let g:gruvbox_italic = 1
 let g:gruvbox_termcolors = 124
 colorscheme gruvbox
 
-" lua << EOF
-" require("mason").setup()
-" EOF
+lua << EOF
+require('leap').set_default_mappings()
 
-" lua << EOF 
-" -- lsp configuration 
-" vim.lsp.config('rust_analyzer', {
-"   -- Server-specific settings. See `:help lsp-quickstart`
-"   settings = {
-"     ['rust-analyzer'] = {},
-"   },
-" })
-
-" EOF
-
-
-
-lua << EOF 
 -- Gruvbox configuration 
 local custom_gruvbox = require'lualine.themes.gruvbox'
 require('lualine').setup {

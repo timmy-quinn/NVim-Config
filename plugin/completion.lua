@@ -1,5 +1,3 @@
-
-lua <<EOF
   -- Set up nvim-cmp.
   local cmp = require'cmp'
 
@@ -78,4 +76,3 @@ lua <<EOF
   require('lspconfig')['clangd'].setup {
     capabilities = capabilities
   }
-EOF
