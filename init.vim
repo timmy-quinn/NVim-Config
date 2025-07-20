@@ -73,6 +73,8 @@ call plug#begin()
     Plug 'morhetz/gruvbox' " Gruvbox: Color Scheme
     Plug 'nvim-lualine/lualine.nvim'
     Plug 'p00f/nvim-ts-rainbow' "Uses tree-sitter to highlight matching parentheses
+    Plug 'goolord/alpha-nvim' " Startup screen
+    Plug 'nvim-tree/nvim-web-devicons'
 
     " Install lsp configuration stuff 
     Plug 'williamboman/mason.nvim'
@@ -98,7 +100,11 @@ call plug#begin()
     
     " comment functionality with gc 
     Plug 'tpope/vim-commentary'
-
+    
+    " Debugging 
+    Plug 'mfussenegger/nvim-dap'
+    Plug 'nvim-neotest/nvim-nio'
+    Plug 'rcarriga/nvim-dap-ui'
 
 call plug#end()
 
