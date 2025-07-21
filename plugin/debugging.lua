@@ -27,21 +27,34 @@ dap.adapters.codelldb = {
   -- detached = false,
 }
 
-dap.configurations.c = {
-  {
-    name = "Launch file",
-    type = "codelldb",
-    request = "launch",
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-  },
-}
+-- dap.configurations.c = {
+--   {
+--     name = "Launch file",
+--     type = "codelldb",
+--     request = "launch",
+--     program = function()
+--       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--     end,
+--     cwd = '${workspaceFolder}',
+--     stopOnEntry = false,
+--   },
+-- }
 
-dap.configurations.cpp = dap.configurations.c
-dap.configurations.rust = dap.configurations.c
+-- dap.configurations.c = {
+--   {
+--     name = "Launch file",
+--     type = "codelldb",
+--     request = "launch",
+--     program = function()
+--       return vim.fn.input('Nothing!!!!!!: ', vim.fn.getcwd() .. '/', 'file')
+--     end,
+--     cwd = '${workspaceFolder}',
+--     stopOnEntry = false,
+--   },
+-- }
+
+-- dap.configurations.cpp = dap.configurations.c
+-- dap.configurations.rust = dap.configurations.c
 
 -- I believe this just sets it up so that the ui is opened during debugging
 -- and closed afterwards 

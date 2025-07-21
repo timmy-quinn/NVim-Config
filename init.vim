@@ -123,10 +123,10 @@ lua << EOF
 
 
 -- Autoload .nvim/launch.lua if it exists
-local launch_config = vim.fn.getcwd() .. '/.nvim/launch.lua'
-if vim.fn.filereadable(launch_config) == 1 then
-  dofile(launch_config)
-end
+-- local launch_config = vim.fn.getcwd() .. '/.nvim/launch.lua'
+-- if vim.fn.filereadable(launch_config) == 1 then
+--  dofile(launch_config)
+-- end
 
 -- Setup nvim-leap
 require('leap').set_default_mappings()
