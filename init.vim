@@ -14,13 +14,31 @@ set ignorecase
 set clipboard=unnamedplus
 set colorcolumn=80
 
-" This is the <leader> key 
-" (leader key is not <C> lol>
-let mapleader = " "
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
 
+" Disable swap files. Prevents creation of temp backup files
+set noswapfile 
+set encoding=utf-8
 
+" """""" KEYBINDINGS """""""""
+" Convenience 
+inoremap jj <Esc>
+noremap o o<Esc>
 nnoremap ; :
 vnoremap ; :
+
+" set <leader> key 
+let mapleader = " "
+
+" Buffer navigation 
+noremap <leader>j :bn<CR> 
+vnoremap <leader>j :bn<CR> 
+
+noremap <leader>k :bp<CR> 
+vnoremap <leader>k :bp<CR>
 
 " mappings prevent pasting and copying to overwrite clipboard
 vnoremap p "_dp
@@ -36,23 +54,6 @@ xnoremap D d
 vnoremap DD dd
 
 
-
-" Keybindings
-inoremap jj <Esc>
-noremap o o<Esc>
-
-" remap this to allow vim-leap to use s 
-" noremap s /S
-
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-
-" Disable swap files. Prevents creation of temp backup files
-set noswapfile 
-
-set encoding=utf-8
 
 call plug#begin()
     Plug 'nvim-lua/plenary.nvim'
@@ -119,6 +120,15 @@ let g:gruvbox_termcolors = 124
 colorscheme gruvbox
 
 lua << EOF
+
+
+-- Autoload .nvim/launch.lua if it exists
+local launch_config = vim.fn.getcwd() .. '/.nvim/launch.lua'
+if vim.fn.filereadable(launch_config) == 1 then
+  dofile(launch_config)
+end
+
+-- Setup nvim-leap
 require('leap').set_default_mappings()
 
 -- Gruvbox configuration 
