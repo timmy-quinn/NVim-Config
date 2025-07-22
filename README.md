@@ -1,14 +1,11 @@
 # NeoVim Configuration 
-This is my NeoVim configuration. Anybody who would like may use this. 
+This is my NeoVim configuration. Feel free to snipe this if you would like.  
+
+![Greeting screen](photos/TimVim.png)
 
 ### Project specific settings
-In your project folder you may add a launch.lua file. Any configurations or 
+In your project folder you may add a .exrc file. Any configurations or 
 settings added to this file will overrwrite existing settings in your init.vim.
-```
-project/
-├── .nvim/
-│   └── launch.lua            # Project-specific DAP config
-```
 
 ### Configuring Debugger Adapter Protocol locally 
 
@@ -30,12 +27,12 @@ dap.configurations.rust = {
 
 ### TODO: 
 
-[] Configure Python debugging 
-[] Upgrade greeter
-[] Add some more notes how the setup is done
-[] Customize the lualine plugin with preffered colors for each mode
-[] Try bufferline  
-[] Filetree maybe? 
-[] Lazy loading where it makes sense 
-[] Markdown previewer maybe? 
+[ ] Configure Python debugging   
+[ ] Upgrade greeter  
+[ ] Add some more notes how the setup is done  
+[ ] Customize the lualine plugin with preffered colors for each mode  
+[ ] Try bufferline   
+[ ] Filetree maybe?  
+[ ] Lazy loading where it makes sense   
+[ ] Markdown previewer maybe?   
 

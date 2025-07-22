@@ -40,6 +40,9 @@ vnoremap <leader>j :bn<CR>
 noremap <leader>k :bp<CR> 
 vnoremap <leader>k :bp<CR>
 
+nnoremap <leader>q :bd<CR>
+vnoremap <leader>q :bd<CR>
+
 " mappings prevent pasting and copying to overwrite clipboard
 vnoremap p "_dp
 
@@ -76,6 +79,8 @@ call plug#begin()
     Plug 'p00f/nvim-ts-rainbow' "Uses tree-sitter to highlight matching parentheses
     Plug 'goolord/alpha-nvim' " Startup screen
     Plug 'nvim-tree/nvim-web-devicons'
+    " Plug 'ryanoasis/vim-devicons' Icons without colours
+    Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
     " Install lsp configuration stuff 
     Plug 'williamboman/mason.nvim'
@@ -110,7 +115,7 @@ call plug#begin()
 call plug#end()
 
 
-" Appearance 
+" APPEARANCE 
 let g:gruvbox_transparent_bg = 1
 let g:gruvbox_bold = 1
 let g:gruvbox_underline = 1
@@ -121,26 +126,47 @@ colorscheme gruvbox
 
 lua << EOF
 
-
--- Autoload .nvim/launch.lua if it exists
--- local launch_config = vim.fn.getcwd() .. '/.nvim/launch.lua'
--- if vim.fn.filereadable(launch_config) == 1 then
---  dofile(launch_config)
--- end
+vim.o.exrc = true
 
 -- Setup nvim-leap
 require('leap').set_default_mappings()
 
--- Gruvbox configuration 
-local custom_gruvbox = require'lualine.themes.gruvbox'
+-- Lualine configuration 
+vim.o.showmode = false
+local custom_gruvbox = require('lualine.themes.gruvbox')
+
+-- This switches around the configurations. 
+-- Note: if you run :source, then the colors will be further flipped
+vim.opt.termguicolors = true
+require("bufferline").setup{}
+
+custom_gruvbox.visual, custom_gruvbox.normal, custom_gruvbox.insert = custom_gruvbox.normal, custom_gruvbox.insert, custom_gruvbox.visual
+
+
 require('lualine').setup {
   options = {
     theme = custom_gruvbox,
     section_separators = '',
     component_separators = '',
   },
+  tabline = {
+      lualine_c = {
+          {
+          'buffers',
+          max_length = vim.o.columns*0.7,
+          show_filename_only = true, 
+          show_modified_status=true, 
+            
+          symbols = {
+            modified = ' ●',      -- Text to show when modified
+          }, 
+        }
+      }, 
+      lualine_z = {'tabs'}
+  }
+
 }
+
+vim.api.nvim_set_hl(0, 'lualine_buffer_active', {link = 'Visual'}) 
 EOF
-
-
 
