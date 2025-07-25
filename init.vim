@@ -44,6 +44,14 @@ vnoremap <leader>k :bp<CR>
 nnoremap <leader>q :bd<CR>
 vnoremap <leader>q :bd<CR>
 
+" Tab navigation 
+" nnoremap <leader>t <C-w>
+" vnoremap <leader>t <C-w>
+nnoremap <C-h> <C-w>h 
+nnoremap <C-j> <C-w>j 
+nnoremap <C-k> <C-w>k 
+nnoremap <C-l> <C-w>l 
+
 " mappings prevent pasting and copying to overwrite clipboard
 vnoremap p "_dp
 
@@ -74,6 +82,7 @@ call plug#begin()
     Plug 'preservim/nerdtree'   " file tree
     Plug 'tpope/vim-speeddating' " quickly adjust dates using <C-a>, <C-x>
     Plug 'ggandor/leap.nvim' " jump to place using two character search
+    Plug 'alexghergh/nvim-tmux-navigation'
 
     " Appearance 
     Plug 'morhetz/gruvbox'  " Gruvbox Color Scheme
@@ -112,6 +121,7 @@ call plug#begin()
     Plug 'mfussenegger/nvim-dap'
     Plug 'nvim-neotest/nvim-nio'
     Plug 'rcarriga/nvim-dap-ui'
+    Plug 'theHamsta/nvim-dap-virtual-text'
 
 call plug#end()
 
