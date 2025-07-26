@@ -52,6 +52,14 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k 
 nnoremap <C-l> <C-w>l 
 
+nnoremap <leader>s <C-w>s " Split horizontally 
+nnoremap <leader>v <C-w>v " Split vertically 
+
+" Exit the nvim builtin terminal
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-q> <C-\><C-n>
+
+
 " mappings prevent pasting and copying to overwrite clipboard
 vnoremap p "_dp
 
@@ -79,7 +87,8 @@ call plug#begin()
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Syntax and code analysis
 
     " Convenience, navigation, editing 
-    Plug 'preservim/nerdtree'   " file tree
+    " Plug 'preservim/nerdtree'   " file tree
+    Plug 'nvim-tree/nvim-tree.lua'
     Plug 'tpope/vim-speeddating' " quickly adjust dates using <C-a>, <C-x>
     Plug 'ggandor/leap.nvim' " jump to place using two character search
     Plug 'alexghergh/nvim-tmux-navigation'
@@ -135,12 +144,13 @@ let g:gruvbox_italic = 1
 let g:gruvbox_termcolors = 124
 colorscheme gruvbox
 
+
 " File tree configurations 
-let g:NERDTreeWinPos = "right"
-nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>y :NERDTreeToggleFocus<CR>
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+" let g:NERDTreeWinPos = "right"
+" nnoremap <leader>e :NERDTreeToggle<CR>
+" nnoremap <leader>y :NERDTreeToggleFocus<CR>
+" " Exit Vim if NERDTree is the only window remaining in the only tab.
+" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
 
 lua << EOF
 
