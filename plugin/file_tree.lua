@@ -6,6 +6,10 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
+
+-- make C-e toggle the file explorer 
+vim.keymap.set('n', '<C-e>', ':NvimTreeToggle<CR>', {silent=true, noremap=true })
+
 -- ok, so here we define a function to replace the existing on_attach function 
 -- this plugin uses 
 local function my_on_attach(bufnr)
@@ -23,9 +27,6 @@ local function my_on_attach(bufnr)
     -- unmap, and C-e and remap that function to C-p
     vim.keymap.del('n', '<C-e>', {buffer = bufnr})
     vim.keymap.set('n', '<C-p>', nvim_tree.tree.change_root_to_parent, opts('Up'))
-
-    -- make C-e toggle the file explorer 
-    vim.keymap.set('n', '<C-e>', ':NvimTreeToggle<CR>', {silent=true, noremap=true })
 
 end
 

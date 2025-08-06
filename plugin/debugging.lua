@@ -67,6 +67,9 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
+-- For a specific project, put this code in your .nvim/launch.lua 
+-- as per the project_specific.lua
+--
 -- Example configurations for C, C++, and Rust
 -- dap.configurations.c = {
 --   {

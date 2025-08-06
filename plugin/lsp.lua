@@ -22,7 +22,13 @@ require("mason-lspconfig").setup {
 
 local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup({})
-lspconfig.rust_analyzer.setup({})
+lspconfig.rust_analyzer.setup({
+    ['rust-analyzer'] = {
+        diagnostics = {
+            virtualText = false,
+        },
+    },
+})
 lspconfig.pyright.setup({})
 lspconfig.clangd.setup({})
 
