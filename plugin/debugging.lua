@@ -71,14 +71,17 @@ end
 -- as per the project_specific.lua
 --
 -- Example configurations for C, C++, and Rust
+-- local dap = require("dap")
 -- dap.configurations.c = {
 --   {
 --     name = "Launch file",
 --     type = "codelldb",
 --     request = "launch",
---     program = function()
---       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
---     end,
+--     program = vim.fn.getcwd() .. 'file_path',
+--     OR
+--     -- program = function()
+--       -- return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--     -- end,
 --     cwd = '${workspaceFolder}',
 --     stopOnEntry = false,
 --   },

@@ -10,6 +10,7 @@ set clipboard=unnamedplus
 set ttyfast
 
 set ignorecase
+set smartcase
 
 set clipboard=unnamedplus
 set colorcolumn=80
