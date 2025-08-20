@@ -4,6 +4,12 @@ local dapui = require("dapui")
 local widgets = require('dap.ui.widgets')
 local vtext = require('nvim-dap-virtual-text')
 
+
+
+-- If using the above, then `python3 -m debugpy --version`
+-- must work in the shell
+require("dap-python").setup("python")
+
 require("dapui").setup()
 vtext.setup()
 
@@ -40,6 +46,10 @@ dap.adapters.codelldb = {
   -- detached = false,
 }
 
+-- Stop on exceptions
+-- you could configure this for just python using dap.defaults.python.exception_breakpoints
+dap.defaults.fallback.exception_breakpoints = {'uncaught'}
+
 
 -- Setting up the dap-ui 
 --
@@ -55,20 +65,40 @@ dap.adapters.codelldb = {
 --     },
 -- })
 
--- Set it up so that the gui is opened at the start of a debug session and 
--- closes at end of the debug session. 
+-- Set it up so that the gui is opened at the start of a debug session 
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
+
+
+for _, config in ipairs(dap.configurations.python) do
+  config.console = 'integratedTerminal'
 end
 
 -- For a specific project, put this code in your .nvim/launch.lua 
 -- as per the project_specific.lua
+-- 
+-- Example configuration for Python 
+-- you will need to have debugpy installed in the venv. 
+-- You don't have to use the venv installed in your project if you don't 
+-- want to
+-- require("dap-python").setup("path/to/venv/python")
+-- local dap = require("dap")
+-- dap.configurations.python = {
+--   {
+--     name = "Launch file",
+--     type = "codelldb",
+--     request = "launch",
+--     program = vim.fn.getcwd() .. 'file_path',
+--     OR
+--     -- program = function()
+--       -- return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--     -- end,
+--     cwd = '${workspaceFolder}',
+--     stopOnEntry = false,
+--   },
+-- }
+--
 --
 -- Example configurations for C, C++, and Rust
 -- local dap = require("dap")

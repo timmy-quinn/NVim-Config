@@ -90,7 +90,7 @@ call plug#begin()
     Plug 'nvim-tree/nvim-tree.lua'
     Plug 'tpope/vim-speeddating' " quickly adjust dates using <C-a>, <C-x>
     Plug 'ggandor/leap.nvim' " jump to place using two character search
-    Plug 'alexghergh/nvim-tmux-navigation'
+    Plug 'mrjones2014/smart-splits.nvim'
     " Sadly I cannot get this plugin to work
     " Plug 'rachartier/tiny-inline-diagnostic.nvim' " better inline diagnostics
 
