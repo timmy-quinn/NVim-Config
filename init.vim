@@ -132,6 +132,8 @@ call plug#begin()
     Plug 'nvim-neotest/nvim-nio'
     Plug 'rcarriga/nvim-dap-ui'
     Plug 'theHamsta/nvim-dap-virtual-text'
+    Plug 'mfussenegger/nvim-dap-python'
+
 
 call plug#end()
 
