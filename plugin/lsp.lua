@@ -20,6 +20,11 @@ require("mason-lspconfig").setup {
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 }
 
+vim.diagnostic.config({
+    virtual_text = true,
+    underline = true}
+)
+
 local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup({})
 lspconfig.rust_analyzer.setup({
@@ -30,10 +35,25 @@ lspconfig.rust_analyzer.setup({
     },
 })
 lspconfig.pyright.setup({})
-lspconfig.clangd.setup({})
+-- lspconfig.clangd.setup({
+--     cmd = {'clangd', '--background-index', '--clang-tidy'}
+-- }
+-- )
 
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 vim.keymap.set('n', "gd", vim.lsp.buf.definition, {})
 vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
 
+
+-- When using clangd, to ensure that clangd is aware of the include paths, 
+-- you can use either an auto_generated compile_commands.json, or you can add 
+-- the files to a .clangd file
+--
+-- ```c
+-- CompileFlags:
+--   Add: [
+--     "-I", "C:\\Proj\\hi_core\\HI_Protocol\\lib\\include\\modbus", 
+--     "-I", "C:\\Proj\\hi_core\\HI_Base\\lib\\include\\hi_base", 
+--     "-I", "C:\\Proj\\hi_core\\HI_Base\\lib\\include", 
+--   ]
 

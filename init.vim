@@ -20,6 +20,12 @@ set shiftwidth=4
 set expandtab
 set autoindent
 
+" This should ensure that the gutter on the left is always open. 
+" I find it annoying when the gutter appears and disappears as 
+" for example happens when the lsp is detecting errors and warnings
+" in the code
+set signcolumn=yes
+
 " Disable swap files. Prevents creation of temp backup files
 set noswapfile 
 set encoding=utf-8
@@ -48,10 +54,10 @@ vnoremap <leader>q :bd<CR>
 " Tab navigation 
 " nnoremap <leader>t <C-w>
 " vnoremap <leader>t <C-w>
-nnoremap <C-h> <C-w>h 
-nnoremap <C-j> <C-w>j 
-nnoremap <C-k> <C-w>k 
-nnoremap <C-l> <C-w>l 
+" nnoremap <C-h> <C-w>h 
+" nnoremap <C-j> <C-w>j 
+" nnoremap <C-k> <C-w>k 
+" nnoremap <C-l> <C-w>l 
 
 nnoremap <leader>s <C-w>s " Split horizontally 
 nnoremap <leader>v <C-w>v " Split vertically 
@@ -75,10 +81,12 @@ xnoremap D d
 vnoremap DD dd
 
 call plug#begin()
-
+    
+    " Used for asynchronous programming coroutines, other plugins depend on 
+    " this
     Plug 'nvim-lua/plenary.nvim'
 
-    Plug 'dense-analysis/ale' " linters 
+    " Plug 'dense-analysis/ale' " linters 
 
     " Searching 
     Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } " fuzzy finder                                
@@ -90,7 +98,10 @@ call plug#begin()
     Plug 'nvim-tree/nvim-tree.lua'
     Plug 'tpope/vim-speeddating' " quickly adjust dates using <C-a>, <C-x>
     Plug 'ggandor/leap.nvim' " jump to place using two character search
-    Plug 'mrjones2014/smart-splits.nvim'
+    " Plug 'mrjones2014/smart-splits.nvim'
+    "
+    Plug 'numToStr/Navigator.nvim'
+    
     " Sadly I cannot get this plugin to work
     " Plug 'rachartier/tiny-inline-diagnostic.nvim' " better inline diagnostics
 
@@ -122,7 +133,7 @@ call plug#begin()
     " Language specific
     " Not sure if these are needed really, at least not for me. 
     " Plug 'rust-lang/rust.vim'
-    Plug 'vim-scripts/c.vim'
+    " Plug 'vim-scripts/c.vim'
     
     " comment functionality with gc 
     Plug 'tpope/vim-commentary'
