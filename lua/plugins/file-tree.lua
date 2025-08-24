@@ -1,15 +1,3 @@
--- disable netrw at the very start of your init.lua
--- this is the default nvim lua file tree thingy 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- optionally enable 24-bit colour
-vim.opt.termguicolors = true
-
-
--- make C-e toggle the file explorer 
-vim.keymap.set('n', '<C-e>', ':NvimTreeToggle<CR>', {silent=true, noremap=true })
-
 -- ok, so here we define a function to replace the existing on_attach function 
 -- this plugin uses 
 local function my_on_attach(bufnr)
@@ -30,9 +18,20 @@ local function my_on_attach(bufnr)
 
 end
 
-require("nvim-tree").setup {
-    view = {
-        side = "right",
+return {
+    "nvim-tree/nvim-tree.lua",
+    cmd = {"NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFileToggle"}, 
+    keys = {
+        {"<C-e>", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file explorer"},
     },
-    on_attach = my_on_attach,
+    config = function()
+        require("nvim-tree").setup {
+            view = {
+                side = "right",
+            },
+            on_attach = my_on_attach,
+            -- make C-e toggle the file explorer 
+            -- vim.keymap.set('n', '<C-e>', ':NvimTreeToggle<CR>', {silent=true, noremap=true })
+        }
+    end
 }
