@@ -1,7 +1,3 @@
-
-
-
-
 -- ok, so here we define a function to replace the existing on_attach function 
 -- this plugin uses 
 local function my_on_attach(bufnr)
@@ -24,6 +20,10 @@ end
 
 return {
     "nvim-tree/nvim-tree.lua",
+    cmd = {"NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFileToggle"}, 
+    keys = {
+        {"<C-e>", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file explorer"},
+    },
     config = function()
         require("nvim-tree").setup {
             view = {
@@ -31,7 +31,7 @@ return {
             },
             on_attach = my_on_attach,
             -- make C-e toggle the file explorer 
-            vim.keymap.set('n', '<C-e>', ':NvimTreeToggle<CR>', {silent=true, noremap=true })
+            -- vim.keymap.set('n', '<C-e>', ':NvimTreeToggle<CR>', {silent=true, noremap=true })
         }
     end
 }

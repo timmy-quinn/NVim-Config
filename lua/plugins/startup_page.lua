@@ -1,5 +1,5 @@
 return {
-    'goolord/alpha.nvim', 
+    'goolord/alpha-nvim', 
     config = function()
         local alpha = require("alpha")
         local dashboard = require("alpha.themes.dashboard")
@@ -65,7 +65,6 @@ return {
             dashboard.button( "s", "  > Settings" , ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
             dashboard.button( "q", "  > Quit", ":qa<CR>"),
         }
-
         alpha.setup(dashboard.opts)
 
 

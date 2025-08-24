@@ -1,10 +1,14 @@
 return {
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'hrsh7th/cmp-buffer'},
-    {'hrsh7th/cmp-path'},
-    {'hrsh7th/cmp-cmdline'},
     {
         'hrsh7th/nvim-cmp', 
+        lazy = true,
+        event = "InsertEnter",
+        dependencies = {
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-path'},
+            {'hrsh7th/cmp-cmdline'}, 
+        },
         config = function()
           -- Set up nvim-cmp.
           local cmp = require("cmp")
@@ -83,9 +87,9 @@ return {
           -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
           require('lspconfig')['clangd'].setup {
             capabilities = capabilities,
-            diagnostics = {
-                virtualText = true,
-            },
+            -- diagnostics = {
+            --     virtualText = false,
+            -- },
           }
         end
     }

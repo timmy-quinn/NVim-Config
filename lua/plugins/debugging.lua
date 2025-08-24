@@ -1,60 +1,62 @@
 return {
-    {
-        "mfussenegger/nvim-dap-python",
-        config = function()
-            require("dap-python").setup("python")
-        end
-        -- For a specific project, put this code in your .nvim/launch.lua 
-        -- as per the project_specific.lua
-        -- 
-        -- Example configuration for Python 
-        -- you will need to have debugpy installed in the venv. 
-        -- You don't have to use the venv installed in your project if you don't 
-        -- want to
-        -- require("dap-python").setup("path/to/venv/python")
-        -- local dap = require("dap")
-        -- dap.configurations.python = {
-        --   {
-        --     name = "Launch file",
-        --     type = "codelldb",
-        --     request = "launch",
-        --     program = vim.fn.getcwd() .. 'file_path',
-        --     OR
-        --     -- program = function()
-        --       -- return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        --     -- end,
-        --     cwd = '${workspaceFolder}',
-        --     stopOnEntry = false,
-        --   },
-        -- }
-    },
+    -- {
+    --     "mfussenegger/nvim-dap-python",
+    --     lazy = true,
+    --     config = function()
+    --         require("dap-python").setup("python")
+    --     end
+    --     -- For a specific project, put this code in your .nvim/launch.lua 
+    --     -- as per the project_specific.lua
+    --     -- 
+    --     -- Example configuration for Python 
+    --     -- you will need to have debugpy installed in the venv. 
+    --     -- You don't have to use the venv installed in your project if you don't 
+    --     -- want to
+    --     -- require("dap-python").setup("path/to/venv/python")
+    --     -- local dap = require("dap")
+    --     -- dap.configurations.python = {
+    --     --   {
+    --     --     name = "Launch file",
+    --     --     type = "codelldb",
+    --     --     request = "launch",
+    --     --     program = vim.fn.getcwd() .. 'file_path',
+    --     --     OR
+    --     --     -- program = function()
+    --     --       -- return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    --     --     -- end,
+    --     --     cwd = '${workspaceFolder}',
+    --     --     stopOnEntry = false,
+    --     --   },
+    --     -- }
+    -- },
     {
 
     'mfussenegger/nvim-dap',
     dependencies = {
-        "rcarriga/nvim-dap-ui",
-        "theHamsta/nvim-dap-virtual-text",
-        "nvim-neotest/nvim-nio",
+        {"rcarriga/nvim-dap-ui"},
+        {"theHamsta/nvim-dap-virtual-text"},
+        {"nvim-neotest/nvim-nio"},
+        {"mfussenegger/nvim-dap-python"},
+    },
+    lazy = true,
+    keys = {
+        {'<C-g>t', function() require("dap").toggle_breakpoint() end},
+        {'<C-g>b', function() require("dap").continue() end},
+        {'<C-g>i', function() require("dap").step_into() end},
+        {'<C-g>o', function() require("dap").step_over() end},
     },
     config = function()
         local dap = require("dap")
         local dapui = require("dapui")
         local widgets = require('dap.ui.widgets')
         local vtext = require('nvim-dap-virtual-text')
+        require("dap-python").setup("python")
 
 
-
-        -- If using the above, then `python3 -m debugpy --version`
-        -- must work in the shell
+        vim.keymap.set("n", '<C-g>;', function() dap.close() dapui.close() end) 
 
         require("dapui").setup()
         vtext.setup()
-
-        vim.keymap.set('n', '<C-g>t', dap.toggle_breakpoint, {})
-        vim.keymap.set('n', '<C-g>b', dap.continue, {})
-        vim.keymap.set('n', '<C-g>i', dap.step_into, {})
-        vim.keymap.set('n', '<C-g>o', dap.step_over, {})
-        vim.keymap.set('n', '<C-g>;', function() dap.close() dapui.close() end, {})
 
         -- Configure key map for display values when hovering 
         vim.keymap.set({'n', 'v'}, '<Leader>dh', widgets.hover )

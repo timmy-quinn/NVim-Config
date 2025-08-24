@@ -1,7 +1,7 @@
 return {
     {
         "williamboman/mason.nvim", 
-        lazy = false, 
+        cmd = "Mason",
         config = function()
             require("mason").setup()
         end,
@@ -25,22 +25,17 @@ return {
         end
     },
     {
-        "neovim/nvim-lspconfig", 
-        lazy = false, 
+        "neovim/nvim-lspconfig",
+        lazy = false,
         config = function()
-
-            vim.diagnostic.config({
-                virtual_text = true,
-                underline = true}
-            )
 
             local lspconfig = require('lspconfig')
             lspconfig.lua_ls.setup({})
             lspconfig.rust_analyzer.setup({
                 ['rust-analyzer'] = {
-                    diagnostics = {
-                        virtualText = false,
-                    },
+                    -- diagnostics = {
+                    --     virtualText = false,
+                    -- },
                 },
             })
             lspconfig.pyright.setup({})

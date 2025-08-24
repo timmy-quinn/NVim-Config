@@ -8,6 +8,9 @@ choco install -y neovim wezterm
 # install ripgrep which is used by telescope and npm which is used by Mason/lsp 
 choco install -y ripgrep nodejs.install 
 
+# Install luarocks which is a requirement for lazy.nvim
+winget install --id=DEVCOM.Lua  -e
+
 iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
     ni $HOME/vimfiles/autoload/plug.vim -Force
 

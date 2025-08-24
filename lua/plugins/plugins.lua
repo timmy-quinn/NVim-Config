@@ -1,6 +1,7 @@
 return {
     {
         'p00f/nvim-ts-rainbow', 
+        lazy = "VeryLazy"
         -- "Uses tree-sitter to highlight matching parentheses"
     },
     {
