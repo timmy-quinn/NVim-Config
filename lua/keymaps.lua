@@ -1,4 +1,3 @@
-
 local set = vim.keymap.set
 
 set("i", "jj", "<Esc>")
