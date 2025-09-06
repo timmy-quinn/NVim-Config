@@ -20,7 +20,13 @@ return {
                     "pyright",
                     "clangd"
                 },
-                vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+                -- THESE must be false / NIL to avoid duplicate 
+                -- More info here: 
+                -- https://github.com/rachartier/tiny-inline-diagnostic.nvim/issues/131#issuecomment-3242980586
+                autoatic_installation = false, 
+                automatic_setup = false, 
+                automatic_enable = false, 
+                handlers = nil,
             }
         end
     },
@@ -47,6 +53,8 @@ return {
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
             vim.keymap.set('n', "gd", vim.lsp.buf.definition, {})
             vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
+
+            vim.keymap.set({'n', 'v'}, '<leader>s', ':ClangdSwitchSourceHeader<CR>')
 
 
             -- When using clangd, to ensure that clangd is aware of the include paths, 
