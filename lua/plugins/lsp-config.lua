@@ -23,9 +23,9 @@ return {
                 -- THESE must be false / NIL to avoid duplicate 
                 -- More info here: 
                 -- https://github.com/rachartier/tiny-inline-diagnostic.nvim/issues/131#issuecomment-3242980586
-                autoatic_installation = false, 
-                automatic_setup = false, 
-                automatic_enable = false, 
+                automatic_installation = false,
+                automatic_setup = false,
+                automatic_enable = false,
                 handlers = nil,
             }
         end
@@ -45,6 +45,7 @@ return {
                 },
             })
             lspconfig.pyright.setup({})
+            lspconfig.clangd.setup({})
             -- lspconfig.clangd.setup({
             --     cmd = {'clangd', '--background-index', '--clang-tidy'}
             -- }
