@@ -55,7 +55,7 @@ return {
             vim.keymap.set('n', "gd", vim.lsp.buf.definition, {})
             vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
 
-            vim.keymap.set({'n', 'v'}, '<leader>s', ':ClangdSwitchSourceHeader<CR>')
+            vim.keymap.set({'n', 'v'}, '<leader>h', ':ClangdSwitchSourceHeader<CR>')
 
 
             -- When using clangd, to ensure that clangd is aware of the include paths, 
