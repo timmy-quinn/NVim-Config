@@ -12,6 +12,11 @@ set("n", ";", ":")
 set("v", ";", ":")
 
 
+-- Center when navigating up and down
+set("n", "<C-d>", "<C-d>zz")
+set("n", "<C-u>", "<C-u>zz")
+
+
 -- Buffer navigation 
 set("n", "<leader>j", ":bn<CR>") 
 set("v", "<leader>j", ":bn<CR>")

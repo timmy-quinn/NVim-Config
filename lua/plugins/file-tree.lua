@@ -29,6 +29,10 @@ return {
             view = {
                 side = "right",
             },
+            filters = {
+                dotfiles = false,
+                git_ignored = false,
+            },
             on_attach = my_on_attach,
             -- make C-e toggle the file explorer 
             -- vim.keymap.set('n', '<C-e>', ':NvimTreeToggle<CR>', {silent=true, noremap=true })

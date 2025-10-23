@@ -36,7 +36,7 @@ return {
         {"rcarriga/nvim-dap-ui"},
         {"theHamsta/nvim-dap-virtual-text"},
         {"nvim-neotest/nvim-nio"},
-        {"mfussenegger/nvim-dap-python"},
+        -- {"mfussenegger/nvim-dap-python"},
     },
     lazy = true,
     keys = {
@@ -50,7 +50,7 @@ return {
         local dapui = require("dapui")
         local widgets = require('dap.ui.widgets')
         local vtext = require('nvim-dap-virtual-text')
-        require("dap-python").setup("python")
+        -- require("dap-python").setup("python")
 
 
         vim.keymap.set("n", '<C-g>;', function() dap.close() dapui.close() end) 

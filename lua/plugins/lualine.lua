@@ -33,7 +33,7 @@ return {
                   lualine_c = {
                       {
                       'buffers',
-                      max_length = vim.o.columns*0.7,
+                      -- max_length = vim.o.columns*0.7,
                       show_filename_only = true, 
                       show_modified_status=true, 
                       use_mode_colors=true,
