@@ -30,6 +30,12 @@ return {
             }
         end
     },
+    { "folke/neodev.nvim", 
+        opts = {}, 
+        config = function()
+            require("neodev").setup({})
+        end 
+    },
     {
         "neovim/nvim-lspconfig",
         lazy = false,
@@ -37,9 +43,62 @@ return {
             vim.lsp.enable('lua_ls')
             vim.lsp.enable('pyright')
             vim.lsp.enable('clangd')
-            vim.lsp.config('clangd', {cmd = {'clangd', '--background-index', '--query-driver=C:\\Program Files (x86)\\GNU Tools Arm Embedded\\9 2019-q4-major\\bin\\arm-none-eabi-gcc-9.2.1.exe'}})
-            
 
+            vim.lsp.config('clangd', {cmd = {'clangd', '--background-index', '--query-driver=C:\\Program Files (x86)\\GNU Tools Arm Embedded\\9 2019-q4-major\\bin\\arm-none-eabi-gcc-9.2.1.exe'}})
+
+            vim.lsp.config('lua_ls',
+                {cmd = { "lua-language-server" },
+                    settings = {
+                        Lua = {
+                            runtime = { version = "LuaJIT" },
+                            diagnostics = { globals = { "vim" } },
+                            workspace = {
+                                library = {
+                                    vim.env.VIMRUNTIME,
+                                    vim.fn.expand("$VIMRUNTIME/lua"),
+                                    vim.fn.stdpath("config") .. "/lua",
+                                },
+                                checkThirdParty = false,
+                            },
+                            telemetry = { enable = false },
+                        },
+                    },
+                }
+            )
+
+            -- vim.lsp.config('lua_ls', 
+
+            -- require('lspconfig').lua_ls.setup {
+            --   settings = {
+            --     Lua = {
+            --       runtime = {
+            --         -- Tell the language server which version of Lua you're using (most likely LuaJIT for Neovim)
+            --         version = 'LuaJIT',
+            --         -- Setup your lua path
+            --         path = vim.split(package.path, ';'),
+            --       },
+            --       diagnostics = {
+            --         -- Get the language server to recognize the `vim` global
+            --         globals = {'vim'},
+            --       },
+            --       workspace = {
+            --         -- Make the server aware of Neovim runtime files
+            --         library = {
+            --           vim.env.VIMRUNTIME,
+            --           -- For lazy.nvim or packer setups, add your plugin paths here:
+            --           -- "${3rd}/luv/library"
+            --           -- "${3rd}/busted/library",
+            --           [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            --           [vim.fn.stdpath('config') .. '/lua'] = true,
+            --         },
+            --         checkThirdParty = false, -- Avoids prompts about third-party libraries
+            --       },
+            --       telemetry = {
+            --         enable = false,
+            --       },
+            --     },
+            --   },
+            -- }
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
             vim.keymap.set('n', "gd", vim.lsp.buf.definition, {})
             vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
