@@ -45,7 +45,6 @@ opt.encoding = "utf-8"
 -- current directory
 vim.o.exrc = true
 
-
 -- vim.diagnostic.config({
 --     virtual_text = false,
 --     underline = true}

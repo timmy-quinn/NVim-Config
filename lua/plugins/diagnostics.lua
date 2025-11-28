@@ -11,7 +11,7 @@ return {
                 }
             },
         })
-        vim.diagnostic.config({virtual_text = false, underline = true})
+        vim.diagnostic.config({virtual_text = false}) --, underline = true})
         -- If using tmux, add this to .tmux.conf
         -- # Undercurl
         -- set -g default-terminal "${TERM}"

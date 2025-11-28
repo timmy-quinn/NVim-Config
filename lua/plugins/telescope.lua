@@ -20,7 +20,7 @@ return {
         {'<leader>fb', function() require('telescope.builtin').buffers() end,    { desc = '[F]ind [B]uffers' }},
         {'<leader>fp', function() require('telescope.builtin').help_tags() end,  { desc = '[F]ind Hel[p]' }},
         {'<leader>fk', function() require('telescope.builtin').keymaps() end,  { desc = '[F]ind [K]eymaps' }},
-        -- {'<leader>fn', function() require('telescope.builtin').lsp_document_symbols({symbols='function'}) end, {desc = '[F]ind Functio[n]s'}},
+        {'<leader>fn', function() require('telescope.builtin').lsp_document_symbols({symbols='function'}) end, {desc = '[F]ind Functio[n]s'}},
         {'<leader>fe', function() require('telescope.builtin').diagnostics({bufnr=0}) end, {desc = '[F]ind Diagnostic Messages ([E]rrors'}},
     },
 	config = function()
