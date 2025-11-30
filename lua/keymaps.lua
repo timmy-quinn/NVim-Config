@@ -31,9 +31,35 @@ set("v", "<leader>q", ":bd<CR>")
 set("n", "<leader>s", "<C-w>s \"") -- Split horizontally 
 set("n", "<leader>v", "<C-w>v") -- Split vertically 
 
+-- set("n", "<C-Up>", ":resize +2<CR>")
+-- set("n", "<C-Down>", ":resize -2<CR>")
+-- set("n", "<C-Left>", ":vertical resize -2<CR>")
+-- set("n", "<C-Right>", ":vertical resize +2<CR>")
+
 -- Exit the nvim builtin terminal
 set("t", "<Esc>", "<C-\\><C-n>")
 set("t", "<C-q>", "<C-\\><C-n>")
+
+local function smart_resize(direction, amount)
+  local cur_win = vim.api.nvim_get_current_win()
+  local neighbor = vim.fn.winnr(direction)
+  if neighbor ~= cur_win then
+    if direction == 'h' then
+      vim.cmd('vertical resize +' .. amount)
+    elseif direction == 'l' then
+      vim.cmd('vertical resize -' .. amount)
+    elseif direction == 'j' then
+      vim.cmd('resize -' .. amount)
+    elseif direction == 'k' then
+      vim.cmd('resize +' .. amount)
+    end
+  end
+end
+
+set('n', '<C-Right>', function() smart_resize('l', 2) end)
+set('n', '<C-Left>',  function() smart_resize('h', 2) end)
+set('n', '<C-Down>',  function() smart_resize('j', 2) end)
+set('n', '<C-Up>',    function() smart_resize('k', 2) end)
 
 
 -- mappings prevent pasting and copying to overwrite clipboard

@@ -56,16 +56,34 @@ return {
         }
 
 
-        
         -- Set menu
         dashboard.section.buttons.val = {
-            dashboard.button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
-            dashboard.button( "f", "  > Find file", ":Telescope find_files<CR>"),
+            dashboard.button("u", "󰜷 > Update", function() require("lazy").update() end),
+            dashboard.button("t", "  > Temp file", ":cd C:/temp | :e "),
             dashboard.button( "r", "  > Recent"   , ":Telescope oldfiles<CR>"),
             dashboard.button( "s", "  > Settings" , ":e $MYVIMRC | :cd %:p:h | wincmd k | pwd<CR>"), -- | split . | wincmd k | pwd<CR>"),
             dashboard.button( "q", "  > Quit", ":qa<CR>"),
         }
+
         alpha.setup(dashboard.opts)
+
+        -- Show the amoung of time it took to update
+        vim.api.nvim_create_autocmd("User", {
+            once = true,
+            pattern = "LazyVimStarted",
+            callback = function()
+                local stats = require("lazy").stats()
+                local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+                dashboard.section.footer.val = "  Neovim loaded "
+                .. stats.loaded
+                .. "/"
+                .. stats.count
+                .. " plugins in "
+                .. ms
+                .. "ms"
+                pcall(vim.cmd.AlphaRedraw)
+            end,
+        })
 
 
 
