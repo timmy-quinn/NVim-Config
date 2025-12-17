@@ -24,7 +24,9 @@ return {
         {'<leader>fe', function() require('telescope.builtin').diagnostics({bufnr=0}) end, {desc = '[F]ind Diagnostic Messages ([E]rrors'}},
     },
 	config = function()
-		require('telescope').setup({})
+		require('telescope').setup({
+            defaults = { layout_strategy = 'vertical'}
+        })
 	end
 }
 

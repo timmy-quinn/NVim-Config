@@ -18,5 +18,6 @@ return {
         -- options, see Configuration section below
         -- there are no required options atm
       });
+      vim.keymap.set({'n'},"<leader>gf", "<CMD>GrugFar<CR>",   {})
     end
   }

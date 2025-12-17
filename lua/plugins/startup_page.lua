@@ -58,11 +58,11 @@ return {
 
         -- Set menu
         dashboard.section.buttons.val = {
-            dashboard.button("u", "󰜷 > Update", function() require("lazy").update() end),
+            dashboard.button("u", "󰜷  > Update", function() require("lazy").update() end),
             dashboard.button("t", "  > Temp file", ":cd C:/temp | :e "),
-            dashboard.button( "r", "  > Recent"   , ":Telescope oldfiles<CR>"),
-            dashboard.button( "s", "  > Settings" , ":e $MYVIMRC | :cd %:p:h | wincmd k | pwd<CR>"), -- | split . | wincmd k | pwd<CR>"),
-            dashboard.button( "q", "  > Quit", ":qa<CR>"),
+            dashboard.button("r", "  > Recent"   , ":Telescope oldfiles<CR>"),
+            dashboard.button("s", "  > Settings" , ":e $MYVIMRC | :cd %:p:h | wincmd k | pwd<CR>"), -- | split . | wincmd k | pwd<CR>"),
+            dashboard.button("q", "  > Quit", ":qa<CR>"),
         }
 
         alpha.setup(dashboard.opts)
