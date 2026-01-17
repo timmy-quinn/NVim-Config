@@ -139,6 +139,27 @@ local function add_snippets()
             ls.snip_expand(fn_header, {})
         end, {})
 
+        ls.add_snippets(
+            "all", {
+                s('line_brk', {
+                    f(function()
+                        local cs = vim.bo.commentstring
+                        if not cs or cs == "" then 
+                            return ""
+                        end
+                        local comment_string = cs:gsub(" %%s", "")
+                        local rtn = ""
+                        for i = 1, (80 /string.len(comment_string)) do
+                            rtn = rtn .. comment_string
+                        end
+                        rtn = rtn
+                        return rtn
+                    end, {}),
+                    t({""}),
+                }), 
+                }
+            )
+
 end
 
 
