@@ -21,8 +21,12 @@ end
 return {
     "nvim-tree/nvim-tree.lua",
     cmd = {"NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFileToggle"}, 
+-- "<cmd>NvimTreeToggle<CR>"
     keys = {
-        {"<C-e>", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file explorer"},
+        {"<C-e>", function()
+            require('nvim-tree.api').tree.toggle({update_root=true, update_cwd=true})
+            -- require('nvim-tree.api').tree.sync_root_with_cwd()
+        end , desc = "Toggle file explorer"},
     },
     config = function()
         require("nvim-tree").setup {
@@ -34,6 +38,9 @@ return {
                 git_ignored = false,
             },
             on_attach = my_on_attach,
+            -- update_root = true,
+            update_cwd=true,
+
             -- make C-e toggle the file explorer 
             -- vim.keymap.set('n', '<C-e>', ':NvimTreeToggle<CR>', {silent=true, noremap=true })
         }
