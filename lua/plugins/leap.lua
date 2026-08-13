@@ -1,7 +1,7 @@
 return {
     {
         -- leap around the nvim buffer using two character pairs
-        'ggandor/leap.nvim', 
+        url = 'https://codeberg.org/andyg/leap.nvim',
         config = function()
             -- require('leap').set_default_mappings()
             vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')

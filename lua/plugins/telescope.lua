@@ -20,11 +20,18 @@ return {
         {'<leader>fb', function() require('telescope.builtin').buffers() end,    { desc = '[F]ind [B]uffers' }},
         {'<leader>fp', function() require('telescope.builtin').help_tags() end,  { desc = '[F]ind Hel[p]' }},
         {'<leader>fk', function() require('telescope.builtin').keymaps() end,  { desc = '[F]ind [K]eymaps' }},
-        -- {'<leader>fn', function() require('telescope.builtin').lsp_document_symbols({symbols='function'}) end, {desc = '[F]ind Functio[n]s'}},
+        {'<leader>fn', function() require('telescope.builtin').lsp_document_symbols({symbols='function'}) end, {desc = '[F]ind Functio[n]s'}},
         {'<leader>fe', function() require('telescope.builtin').diagnostics({bufnr=0}) end, {desc = '[F]ind Diagnostic Messages ([E]rrors'}},
+        {'<leader>fp', function() require('telescope').extensions.projects.projects() end, {desc = '[Find] Recent [P]rojects'}},
+        -- {'<leader>fp', function() require('telescope').extensions.projects.() end, {desc = '[Find] Recent [P]rojects'}},
+        -- {'<leader>fp', function() vim.fn.cmd('Telescope Projects') end, {desc = '[Find] Recent [P]rojects'}},
+        --
+-- require'telescope'.extensions.projects.
     },
 	config = function()
-		require('telescope').setup({})
+		require('telescope').setup({
+            defaults = { layout_strategy = 'vertical'}
+        })
 	end
 }
 

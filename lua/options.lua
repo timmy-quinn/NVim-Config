@@ -30,6 +30,7 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
+opt.modeline = false
 
 -- " This should ensure that the gutter on the left is always open. 
 -- " I find it annoying when the gutter appears and disappears as 
@@ -44,7 +45,6 @@ opt.encoding = "utf-8"
 -- Neovim will search for the following files in the 
 -- current directory
 vim.o.exrc = true
-
 
 -- vim.diagnostic.config({
 --     virtual_text = false,

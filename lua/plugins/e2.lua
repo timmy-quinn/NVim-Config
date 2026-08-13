@@ -1,11 +1,15 @@
-local is_linux = vim.uv.os_uname().sysname == "Linux"
-
-if not is_linux then
-    return {
-        dir = "~/nvim_plugins/e2.nvim",
-        opts = {name = "timmy"},
-    }
+if vim.loop.os_uname().sysname == "Linux" then
+  -- Code for Linux-specific configuration
+  return {}
 else
-    return {}
-end
+    return {
+        dir = "~/nvim_plugins/e2",
+    --     opts = {
+    --         -- exe = "C:\\Users\\tquinn\\AppData\\Local\\Programs\\Renesas\\e2_studio\\eclipse\\e2studioc.exe",
+    --         -- workspace = "C:\\Users\\tquinn\\e2_studio\\workspace",
 
+    --         -- exe = "C:\\Renesas\\e2_studio_2022-10\\eclipse\\e2studioc.exe",
+    --         -- workspace = "C:\\Users\\tquinn\\Renesas\\e2_studio2022-10"
+    --     },
+    }
+end
