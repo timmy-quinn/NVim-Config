@@ -3,7 +3,7 @@ return {
         "nvim-treesitter/nvim-treesitter", 
         build = ":TSUpdate", 
         event = "BufRead",
-        -- branch = "main",
+        branch = "master",
         lazy = false,
         -- opts = {
         --       ensure_installed = { 
